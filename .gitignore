@@ -5,6 +5,7 @@
 draw.cpp
 test.cpp
 build/
+build*/
 bin/
 lib/
 .github/**
