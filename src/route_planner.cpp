@@ -103,6 +103,10 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
         distance += active_node->distance(*(active_node->parent));
         active_node = active_node->parent;
     }
+
+    //Don't forget to add final node (the start node itself)
+    path_found.push_back(*active_node);
+    
     // Path is no populated with first node being end destination, and last node being start. Need to reverse as per TODO 6
     std::reverse(path_found.begin(), path_found.end()); // https://www.geeksforgeeks.org/how-to-reverse-a-vector-using-stl-in-c/
 
@@ -130,6 +134,7 @@ void RoutePlanner::AStarSearch() {
     // then while we aren't on end node need to add neighbors and run NextNode to get next favourite nearest
     open_list.push_back(start_node);
     current_node = start_node;
+    current_node->visited = true;
 
     while(current_node != end_node)
     {
