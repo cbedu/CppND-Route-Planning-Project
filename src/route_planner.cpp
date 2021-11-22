@@ -53,22 +53,25 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Remove that node from the open_list.
 // - Return the pointer.
 
+//// My helper notes
+// - Make of use of sort(v->begin(), v->end(), Compare) logic...
+// - Compare:  bool Compare(const vector<int> a, const vector<int> b) { comparison logic; return true/false } 
+
+// Sort by lower
+bool CompareNodeDistance(const RouteModel::Node* a, const RouteModel::Node* b) {
+    float a_dist = a->g_value + a->h_value;
+    float b_dist = b->g_value + b->h_value;
+    return a_dist < b_dist;
+}
+
 RouteModel::Node *RoutePlanner::NextNode() {
     RouteModel::Node* next_node = NULL;
     float next_node_total_dist;
 
-    // Get lowest distance node (if multiple, grabs first one found)
-    for( auto node_iter : open_list)
-    {
-        float node_iter_total_dist = node_iter->g_value + node_iter->h_value;
+    std::sort(open_list.begin(), open_list.end(), CompareNodeDistance);
 
-        //next_node_total_dist assigned when next_node not NULL
-        if((next_node == NULL) || (node_iter_total_dist < next_node_total_dist))
-        {
-            next_node = node_iter;
-            next_node_total_dist = node_iter_total_dist;
-        }
-    }
+    next_node = open_list.back();
+    open_list.pop_back();
 
     return next_node;
 }
