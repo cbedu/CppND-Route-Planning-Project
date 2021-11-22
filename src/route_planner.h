@@ -1,6 +1,7 @@
 #ifndef ROUTE_PLANNER_H
 #define ROUTE_PLANNER_H
-#define COUT_DEBUG
+//#define COUT_ASTAR_DEBUG
+#define COUT_NEXTNODE_DEBUG
 
 #include <iostream>
 #include <vector>
