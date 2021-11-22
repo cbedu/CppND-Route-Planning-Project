@@ -128,16 +128,37 @@ void RoutePlanner::AStarSearch() {
     // we are on start_node,
     // need to add as first entry on list.
     // then while we aren't on end node need to add neighbors and run NextNode to get next favourite nearest
+    #ifdef COUT_DEBUG
+    std::cout << "Got to <1>";
+    #endif
     open_list.push_back(start_node);
     current_node = start_node;
 
+    #ifdef COUT_DEBUG
+    std::cout << "Got to <2>";
+    #endif
     while(current_node != end_node)
     {
+    #ifdef COUT_DEBUG
+    std::cout << "Got to <3>";
+    #endif
         AddNeighbors(current_node);
+    #ifdef COUT_DEBUG
+    std::cout << "Got to <4>";
+    #endif
         current_node = NextNode();
+    #ifdef COUT_DEBUG
+    std::cout << "Got to <5>";
+    #endif
     }
 
+    #ifdef COUT_DEBUG
+    std::cout << "Got to <6>";
+    #endif
     // We should have a path now.
     m_Model.path = ConstructFinalPath(current_node);
 
+    #ifdef COUT_DEBUG
+    std::cout << "Got to <7>";
+    #endif
 }
