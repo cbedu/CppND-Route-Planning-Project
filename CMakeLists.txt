@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.11.3)
 
 # Set the C++ standard we will use
 set(CMAKE_CXX_STANDARD 17)
+# Seems to be required for build on Udacity remote system (https://github.com/udacity/CppND-Route-Planning-Project/issues/13)
+set(CMAKE_CXX_COMPILER "/usr/bin/g++-7")
 
 # Add the path of the cmake files to the CMAKE_MODULE_PATH
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
