@@ -74,7 +74,8 @@ RouteModel::Node *RoutePlanner::NextNode() {
     open_list.pop_back();
 
     #ifdef COUT_NEXTNODE_DEBUG
-    std::cout << "Next node distance: h = " << next_node->h_value << "  g = " << next_node->g_value;
+    //std::cout << "Next node distance: h = " << next_node->h_value << "  g = " << next_node->g_value;
+    std::cout << "Co-ords: x<" << next_node->x << "> y<" << next_node->y << ">" << std::endl;
     #endif
 
     return next_node;
