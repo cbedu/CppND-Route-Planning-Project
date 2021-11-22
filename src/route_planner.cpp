@@ -61,7 +61,7 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 bool CompareNodeDistance(const RouteModel::Node* a, const RouteModel::Node* b) {
     float a_dist = a->g_value + a->h_value;
     float b_dist = b->g_value + b->h_value;
-    return a_dist < b_dist;
+    return a_dist > b_dist;
 }
 
 RouteModel::Node *RoutePlanner::NextNode() {
