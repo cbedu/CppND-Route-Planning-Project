@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build-release",
             "type": "shell",
             "command": "mkdir -p builds/Release && cd builds/Release && cmake -DCMAKE_BUILD_TYPE=Release ../.. && make",
             "problemMatcher": [
@@ -12,7 +12,7 @@
             ]
         },
         {
-            "label": "build-debug",
+            "label": "build",
             "type": "shell",
             "command": "mkdir -p builds/Debug && cd builds/Debug && cmake -DCMAKE_BUILD_TYPE=Debug ../.. && make",
             "problemMatcher": [
