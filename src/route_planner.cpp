@@ -124,4 +124,20 @@ void RoutePlanner::AStarSearch() {
 
     // TODO: Implement your solution here.
 
+    // set up the initial state,
+    // we are on start_node,
+    // need to add as first entry on list.
+    // then while we aren't on end node need to add neighbors and run NextNode to get next favourite nearest
+    open_list.push_back(start_node);
+    current_node = start_node;
+
+    while(current_node != end_node)
+    {
+        AddNeighbors(current_node);
+        current_node = NextNode();
+    }
+
+    // We should have a path now.
+    m_Model.path = ConstructFinalPath(current_node);
+
 }
