@@ -103,7 +103,8 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
         distance += active_node->distance(*(active_node->parent));
         active_node = active_node->parent;
     }
-    // Path is no populated with first node being end destination, and last node being start.
+    // Path is no populated with first node being end destination, and last node being start. Need to reverse as per TODO 6
+    std::reverse(path_found.begin(), path_found.end()); // https://www.geeksforgeeks.org/how-to-reverse-a-vector-using-stl-in-c/
 
     distance *= m_Model.MetricScale(); // Multiply the distance by the scale of the map to get meters.
     return path_found;
