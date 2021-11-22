@@ -54,7 +54,23 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Return the pointer.
 
 RouteModel::Node *RoutePlanner::NextNode() {
+    RouteModel::Node* next_node = NULL;
+    float next_node_total_dist;
 
+    // Get lowest distance node (if multiple, grabs first one found)
+    for( auto node_iter : open_list)
+    {
+        float node_iter_total_dist = node_iter->g_value + node_iter->h_value;
+
+        //next_node_total_dist assigned when next_node not NULL
+        if((next_node == NULL) || (node_iter_total_dist < next_node_total_dist))
+        {
+            next_node = node_iter;
+            next_node_total_dist = node_iter_total_dist;
+        }
+    }
+
+    return next_node;
 }
 
 
