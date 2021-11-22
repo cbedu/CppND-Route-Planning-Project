@@ -91,6 +91,10 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
     std::vector<RouteModel::Node> path_found;
 
     // TODO: Implement your solution here.
+    
+    // path_found will be populated by parents until complete chain
+    // grab current node (which is the goal node)
+    // (while active node is not start node, add to back of list, add distance from parent to distance val, then grab parent and loop)
 
     distance *= m_Model.MetricScale(); // Multiply the distance by the scale of the map to get meters.
     return path_found;
